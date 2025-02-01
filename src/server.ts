@@ -22,5 +22,6 @@ const movieController = new MovieController();
 
 app.get('/movies', movieController.getAll);
 app.get('/movies/:id', movieController.getById);
+app.post('/movies', movieController.create);
 
 app.listen(3000, () => console.log('Server running on port 3000'));
