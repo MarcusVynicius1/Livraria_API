@@ -63,4 +63,14 @@ export class MovieController {
         }
     }
 
+    async delete(req: Request, res: Response) {
+        const client = await pool.connect();
+        try {
+            const result = await client.query('DELETE FROM movies WHERE id = $1 RETURNING *', [req.params.id]);
+            result.rows.length ? res.json(result.rows[0]) : res.status(404).json({ message: 'Movie not found' });
+        } finally {
+            client.release();
+        }
+    }
+
 }
