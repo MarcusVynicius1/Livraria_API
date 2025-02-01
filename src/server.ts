@@ -1,6 +1,7 @@
 import express from 'express';
 import { pool } from './database';
 import dotenv from 'dotenv';
+import { MovieController } from './controllers/MovieController';
 
 dotenv.config();
 
@@ -16,5 +17,9 @@ app.use(express.json());
         console.error('Database connection error', err);
     }
 })();
+
+const movieController = new MovieController();
+
+app.get('/movies', movieController.getAll);
 
 app.listen(3000, () => console.log('Server running on port 3000'));
