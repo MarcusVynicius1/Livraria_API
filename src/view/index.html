@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes API</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <h1>Filmes</h1>
+    <ul id="movie-list"></ul>
+    
+    <h2>Adicionar Filme</h2>
+    <form id="movie-form">
+        <input type="text" id="title" placeholder="Título" required>
+        <input type="text" id="director" placeholder="Diretor" required>
+        <input type="number" id="releaseYear" placeholder="Ano de lançamento" required>
+        <button type="submit">Adicionar</button>
+    </form>
+    
+    <h2>Atualizar Filme</h2>
+    <form id="update-form">
+        <input type="number" id="update-id" placeholder="Filme ID" required>
+        <input type="text" id="update-title" placeholder="Novo Título" required>
+        <input type="text" id="update-director" placeholder="Novo Diretor" required>
+        <input type="number" id="update-releaseYear" placeholder="Novo Ano de lançamento" required>
+        <button type="submit">Atualizar</button>
+    </form>
+    
+    <h2>Encontrar Filme pelo ID</h2>
+    <form id="search-form">
+        <input type="number" id="search-id" placeholder="Filme ID" required>
+        <button type="submit">Encontrar</button>
+    </form>
+    <div id="search-result"></div>
+</body>
+</html>
