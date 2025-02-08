@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         movieList.innerHTML = '';
         movies.forEach(movie => {
             const li = document.createElement('li');
-            li.textContent = `${movie.id} - ${movie.title} (${movie.releaseyear}) - Diirigido por ${movie.director}`;
+            li.textContent = `${movie.id} - ${movie.title} (${movie.releaseYear}) - Diirigido por ${movie.director}`;
             
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Deletar';
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = document.getElementById('search-id').value;
         const response = await fetch(`/movies/${id}`);
         const movie = await response.json();
-        searchResult.innerHTML = movie.id ? `<p>${movie.title} (${movie.releaseyear}) - Dirigido por ${movie.director}</p>` : '<p>Filme não encontrado</p>';
+        searchResult.innerHTML = movie.id ? `<p>${movie.title} (${movie.releaseYear}) - Dirigido por ${movie.director}</p>` : '<p>Filme não encontrado</p>';
     });
 
     fetchMovies();
