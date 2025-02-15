@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     livroForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const title = document.getElementById('title').value;
-        const author = document.getElementById('author').value;
+        const director = document.getElementById('director').value;
         const releaseYear = document.getElementById('releaseYear').value;
         
         await fetch('/livros', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, author, releaseYear })
+            body: JSON.stringify({ title, director, releaseYear })
         });
         
         fetchLivros();
@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const id = document.getElementById('update-id').value;
         const title = document.getElementById('update-title').value;
-        const author = document.getElementById('update-author').value;
+        const director = document.getElementById('update-director').value;
         const releaseYear = document.getElementById('update-releaseYear').value;
         
         await fetch(`/livros/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, author, releaseYear })
+            body: JSON.stringify({ title, director, releaseYear })
         });
         fetchLivros();
         updateForm.reset();
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(`/livros/${id}`);
         const livro = await response.json();
         searchResult.innerHTML = livro.id 
-            ? `<p><strong>${livro.title}</strong> (${livro.releaseYear}) - Autor: ${livro.author}</p>` 
+            ? `<p><strong>${livro.title}</strong> (${livro.releaseYear}) - Autor: ${livro.director}</p>` 
             : '<p>📕 Livro não encontrado!</p>';
     });
 
