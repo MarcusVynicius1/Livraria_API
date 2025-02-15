@@ -1,14 +1,14 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../database';
 
-export class Movie extends Model {
+export class Livro extends Model {
   public id!: number;
   public title!: string;
   public director!: string;
   public releaseYear!: number;
 }
 
-Movie.init(
+Livro.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -30,6 +30,6 @@ Movie.init(
   },
   {
     sequelize,
-    tableName: 'movies',
+    tableName: 'livros',
   }
 );

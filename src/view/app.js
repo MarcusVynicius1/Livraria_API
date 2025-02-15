@@ -1,48 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const movieList = document.getElementById('movie-list');
-    const movieForm = document.getElementById('movie-form');
+    const livroList = document.getElementById('livro-list');
+    const livroForm = document.getElementById('livro-form');
     const updateForm = document.getElementById('update-form');
     const searchForm = document.getElementById('search-form');
     const searchResult = document.getElementById('search-result');
 
-    async function fetchMovies() {
-        const response = await fetch('/movies');
-        const movies = await response.json();
-        movieList.innerHTML = '';
-        movies.forEach(movie => {
+    async function fetchlivros() {
+        const response = await fetch('/livros');
+        const livros = await response.json();
+        livroList.innerHTML = '';
+        livros.forEach(livro => {
             const li = document.createElement('li');
-            li.textContent = `${movie.id} - ${movie.title} (${movie.releaseYear}) - Diirigido por ${movie.director}`;
+            li.textContent = `${livro.id} - ${livro.title} (${livro.releaseYear}) - Diirigido por ${livro.director}`;
             
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Deletar';
-            deleteButton.onclick = () => deleteMovie(movie.id);
+            deleteButton.onclick = () => deletelivro(livro.id);
             
             li.appendChild(deleteButton);
-            movieList.appendChild(li);
+            livroList.appendChild(li);
         });
     }
 
-    async function deleteMovie(id) {
+    async function deletelivro(id) {
         if (confirm('Tem certeza que deseja deletar?')) {
-            await fetch(`/movies/${id}`, { method: 'DELETE' });
-            fetchMovies();
+            await fetch(`/livros/${id}`, { method: 'DELETE' });
+            fetchlivros();
         }
     }
 
-    movieForm.addEventListener('submit', async (event) => {
+    livroForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const title = document.getElementById('title').value;
         const director = document.getElementById('director').value;
         const releaseYear = document.getElementById('releaseYear').value;
         
-        await fetch('/movies', {
+        await fetch('/livros', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, director, releaseYear })
         });
         
-        fetchMovies();
-        movieForm.reset();
+        fetchlivros();
+        livroForm.reset();
     });
 
     updateForm.addEventListener('submit', async (event) => {
@@ -52,22 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const director = document.getElementById('update-director').value;
         const releaseYear = document.getElementById('update-releaseYear').value;
         
-        await fetch(`/movies/${id}`, {
+        await fetch(`/livros/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, director, releaseYear })
         });
-        fetchMovies();
+        fetchlivros();
         updateForm.reset();
     });
 
     searchForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const id = document.getElementById('search-id').value;
-        const response = await fetch(`/movies/${id}`);
-        const movie = await response.json();
-        searchResult.innerHTML = movie.id ? `<p>${movie.title} (${movie.releaseYear}) - Dirigido por ${movie.director}</p>` : '<p>Filme não encontrado</p>';
+        const response = await fetch(`/livros/${id}`);
+        const livro = await response.json();
+        searchResult.innerHTML = livro.id ? `<p>${livro.title} (${livro.releaseYear}) - Dirigido por ${livro.director}</p>` : '<p>Filme não encontrado</p>';
     });
 
-    fetchMovies();
+    fetchlivros();
 });

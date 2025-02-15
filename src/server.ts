@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
 import { connectDB } from './database';
-import { MovieController } from './controllers/MovieController';
+import { LivroController } from './controllers/LivroController';
 
 dotenv.config();
 
@@ -10,46 +10,46 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'view')));
 
-const movieController = new MovieController();
+const livroController = new LivroController();
 
 // Conectar ao banco antes de iniciar o servidor
 connectDB();
 
-app.get('/movies', async (req, res, next) => {
+app.get('/livros', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        await movieController.getAll(req, res);
+        await livroController.getAll(req, res);
     } catch (error) {
         next(error);
     }
 });
 
-app.get('/movies/:id', async (req, res, next) => {
+app.get('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        await movieController.getById(req, res);
+        await livroController.getById(req, res);
     } catch (error) {
         next(error);
     }
 });
 
-app.post('/movies', async (req, res, next) => {
+app.post('/livros', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        await movieController.create(req, res);
+        await livroController.create(req, res);
     } catch (error) {
         next(error);
     }
 });
 
-app.patch('/movies/:id', async (req, res, next) => {
+app.patch('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        await movieController.update(req, res);
+        await livroController.update(req, res);
     } catch (error) {
         next(error);
     }
 });
 
-app.delete('/movies/:id', async (req, res, next) => {
+app.delete('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
-        await movieController.delete(req, res);
+        await livroController.delete(req, res);
     } catch (error) {
         next(error);
     }
