@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmes API</title>
+    <title>Livraria</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="app.js"></script>
 </head>
 <body>
-    <h1>Filmes</h1>
-    <ul id="livro-list"></ul>
-    
-    <h2>Adicionar Filme</h2>
-    <form id="livro-form">
-        <input type="text" id="title" placeholder="Título" required>
-        <input type="text" id="director" placeholder="Diretor" required>
-        <input type="number" id="releaseYear" placeholder="Ano de lançamento" required>
-        <button type="submit">Adicionar</button>
-    </form>
-    
-    <h2>Atualizar Filme</h2>
-    <form id="update-form">
-        <input type="number" id="update-id" placeholder="Filme ID" required>
-        <input type="text" id="update-title" placeholder="Novo Título" required>
-        <input type="text" id="update-director" placeholder="Novo Diretor" required>
-        <input type="number" id="update-releaseYear" placeholder="Novo Ano de lançamento" required>
-        <button type="submit">Atualizar</button>
-    </form>
-    
-    <h2>Encontrar Filme pelo ID</h2>
-    <form id="search-form">
-        <input type="number" id="search-id" placeholder="Filme ID" required>
-        <button type="submit">Encontrar</button>
-    </form>
-    <div id="search-result"></div>
+    <div class="container">
+        <h1>📚 Livraria Online</h1>
+
+        <section class="card">
+            <h2>📖 Lista de Livros</h2>
+            <ul id="livro-list"></ul>
+        </section>
+
+        <section class="card">
+            <h2>➕ Adicionar Livro</h2>
+            <form id="livro-form">
+                <input type="text" id="title" placeholder="Título do Livro" required>
+                <input type="text" id="author" placeholder="Autor" required>
+                <input type="number" id="releaseYear" placeholder="Ano de Publicação" required>
+                <button type="submit">Adicionar 📌</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>✏️ Atualizar Livro</h2>
+            <form id="update-form">
+                <input type="number" id="update-id" placeholder="ID do Livro" required>
+                <input type="text" id="update-title" placeholder="Novo Título" required>
+                <input type="text" id="update-author" placeholder="Novo Autor" required>
+                <input type="number" id="update-releaseYear" placeholder="Novo Ano de Publicação" required>
+                <button type="submit">Atualizar 🔄</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>🔍 Buscar Livro pelo ID</h2>
+            <form id="search-form">
+                <input type="number" id="search-id" placeholder="ID do Livro" required>
+                <button type="submit">Buscar 🔍</button>
+            </form>
+            <div id="search-result"></div>
+        </section>
+    </div>
 </body>
 </html>
