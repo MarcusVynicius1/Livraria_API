@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         livroList.innerHTML = '';
         livros.forEach(livro => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${livro.title}</strong> (${livro.releaseYear}) - Autor: ${livro.author}`;
+            li.innerHTML = `<strong>${livro.title}</strong> (${livro.releaseYear}) - Autor: ${livro.director}`;
 
             const deleteButton = document.createElement('button');
             deleteButton.textContent = '🗑️';

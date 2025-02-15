@@ -1,5 +1,5 @@
-export interface livroDTO {
+export interface LivroDTO {
     title: string;
-    author: string;
+    director: string;
     releaseYear: number;
 }

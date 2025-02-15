@@ -4,7 +4,7 @@ import { sequelize } from '../database';
 export class Livro extends Model {
   public id!: number;
   public title!: string;
-  public author!: string;
+  public director!: string;
   public releaseYear!: number;
 }
 
@@ -19,7 +19,7 @@ Livro.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    author: {
+    director: {
       type: DataTypes.STRING,
       allowNull: false,
     },

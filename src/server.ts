@@ -15,7 +15,7 @@ const livroController = new LivroController();
 // Conectar ao banco antes de iniciar o servidor
 connectDB();
 
-app.get('/livros', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.get('/livros', async (req, res, next) => {
     try {
         await livroController.getAll(req, res);
     } catch (error) {
@@ -23,7 +23,7 @@ app.get('/livros', async (req: express.Request, res: express.Response, next: exp
     }
 });
 
-app.get('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.get('/livros/:id', async (req, res, next) => {
     try {
         await livroController.getById(req, res);
     } catch (error) {
@@ -31,7 +31,7 @@ app.get('/livros/:id', async (req: express.Request, res: express.Response, next:
     }
 });
 
-app.post('/livros', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.post('/livros', async (req, res, next) => {
     try {
         await livroController.create(req, res);
     } catch (error) {
@@ -39,7 +39,7 @@ app.post('/livros', async (req: express.Request, res: express.Response, next: ex
     }
 });
 
-app.patch('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.patch('/livros/:id', async (req, res, next) => {
     try {
         await livroController.update(req, res);
     } catch (error) {
@@ -47,7 +47,7 @@ app.patch('/livros/:id', async (req: express.Request, res: express.Response, nex
     }
 });
 
-app.delete('/livros/:id', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.delete('/livros/:id', async (req, res, next) => {
     try {
         await livroController.delete(req, res);
     } catch (error) {

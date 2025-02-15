@@ -25,8 +25,8 @@ export class LivroController {
 
   async create(req: Request, res: Response): Promise<Response> {
     try {
-      const { title, author, releaseYear } = req.body;
-      const newLivro = await Livro.create({ title, author, releaseYear });
+      const { title, director, releaseYear } = req.body;
+      const newLivro = await Livro.create({ title, director, releaseYear });
       return res.status(201).json(newLivro);
     } catch (error) {
       return res.status(500).json({ error: 'Failed to create livro' });
