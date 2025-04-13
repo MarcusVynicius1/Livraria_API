@@ -4,15 +4,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const sequelize = new Sequelize(
-  process.env.DB_DATABASE as string,
-  process.env.DB_USERNAME as string,
-  process.env.DB_PASSWORD as string,
+  process.env.DB_DATABASE as string,   // Atualizado para DB_DATABASE
+  process.env.DB_USERNAME as string,   // Atualizado para DB_USERNAME
+  process.env.DB_PASSWORD as string,   // Atualizado para DB_PASSWORD
   {
-    host: process.env.DB_HOST,
+    host: process.env.DB_HOST,         // Atualizado para DB_HOST
     dialect: 'postgres',
-    port: Number(process.env.DB_PORT),
+    port: parseInt(process.env.DB_PORT as string, 10), // Usando DB_PORT
     logging: false,
-  }
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  },
 );
 
 export const connectDB = async () => {

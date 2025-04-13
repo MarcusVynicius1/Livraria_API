@@ -1,5 +1,7 @@
-services: 
- api:
+  version: '3.8'
+
+  services:
+    api:
       build: .
       container_name: api_container
       restart: always
